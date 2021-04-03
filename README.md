@@ -1,5 +1,7 @@
 # Bcrypt
+
 ## bcrypt no need to store salt?
+
 The salt is automatically included in the output string which means there is no need to add it by yourself.
 
 ## Run
@@ -11,11 +13,19 @@ Hash:     $2a$14$98XP6TZdyN6ir/q1I7yQLeQQvb60gajYQ9fdaNmb51Wgz4nSLB6oS
 Match:    true
 ```
 
+## Unit test
+
+```bash
+$ go test
+```
+
 ## Benchmark
+
 BenchmarkHashPassword/password-16                    475          54780659 ns/op
 
 ns/op = Operation per second
 total 475 operation
+
 ```bash
 $ go test -bench=. -benchtime=20s
 

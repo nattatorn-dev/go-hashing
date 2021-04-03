@@ -4,6 +4,15 @@ import (
 	"testing"
 )
 
+func Test(t *testing.T) {
+	password := "password"
+	hash, _ := HashPassword(password)
+	match := CheckPasswordHash(password, hash)
+	if !match {
+		t.Error()
+	}
+}
+
 func BenchmarkHashPassword(b *testing.B) {
 	benchmarks := []struct {
 		password string
