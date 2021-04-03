@@ -21,27 +21,19 @@ $ go test
 
 ## Benchmark
 
-BenchmarkHashPassword/password-16                    475          54780659 ns/op
+BenchmarkHashPassword/password-16                    410          63111774 ns/op            5199 B/op         11 allocs/op
 
-ns/op = Operation per second
-total 475 operation
+- 410 is the number of iterations for i := 0; i < b.N; i++
+- 63111774 ns/op is approximate time it took for one iteration to complete
+- 5199 B/op allocs/op means how many distinct memory allocations - occurred per op (single iteration).
+- 11 allocs/op B/op is how many bytes were allocated per op.
+
 
 ```bash
-$ go test -bench=. -benchtime=20s
-
-BenchmarkHashPassword/password-16                    475          54780659 ns/op
-BenchmarkHashPassword/password1234password99-16                      428          53780665 ns/op
-BenchmarkHashPassword/pa$$w@rd1234[assw@rd99-16                      452          53281311 ns/op
-BenchmarkHashPassword/-Ey2@bV=uTK6K%Np@sQCM+-16                      448          53139408 ns/op
-BenchmarkHashPassword/e%4a-DdEtfJbfxfZnjw46#Q8T5M5#8!Njj%Ak%XSM=vQ-16                450          52942657 ns/op
-BenchmarkHashPassword/c7vESMnyTm57y429vrHSk4*?b2cysBqTTZVf67EP!_#5_P!efAbd2haWM-Sd6AU5TxxFV5aZAc5QJsh=VX^dqA2SNe$CpkaPgE33pSZGcSjV-U?ksJEm5uH6Mg@qDf2j-16                 447          53347687 ns/op
-BenchmarkCheckPasswordHash/password-16         453          52211613 ns/op
-BenchmarkCheckPasswordHash/password1234password99-16         458          55415961 ns/op
-BenchmarkCheckPasswordHash/pa$$w@rd1234[assw@rd99-16         414          53107599 ns/op
-BenchmarkCheckPasswordHash/-Ey2@bV=uTK6K%Np@sQCM+-16         468          51518254 ns/op
-BenchmarkCheckPasswordHash/e%4a-DdEtfJbfxfZnjw46#Q8T5M5#8!Njj%Ak%XSM=vQ-16         456          52328948 ns/op
-BenchmarkCheckPasswordHash/c7vESMnyTm57y429vrHSk4*?b2cysBqTTZVf67EP!_#5_P!efAbd2haWM-Sd6AU5TxxFV5aZAc5QJsh=VX^dqA2SNe$CpkaPgE33pSZGcSjV-U?ksJEm5uH6Mg@qDf2j-16            459          50759361 ns/op
-PASS
-ok      github.com/nattatorn-dev/go-hashing     351.591s
+$ go test -bench=. -benchtime=20s -benchmem
+BenchmarkHashPassword/password-16                    410          63111774 ns/op            5199 B/op         11 allocs/op
+BenchmarkHashPassword/password1234password99-16                      372          62160115 ns/op            5231 B/op         11 allocs/op
+BenchmarkHashPassword/pa$$w@rd1234[assw@rd99-16                      374          64401856 ns/op            5232 B/op         11 allocs/op
+BenchmarkHashPassword/-Ey2@bV=uTK6K%Np@sQCM+-16                      373          65280327 ns/op            5232 B/op         11 allocs/op
 
 ```
