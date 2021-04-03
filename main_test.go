@@ -27,7 +27,7 @@ func BenchmarkHashPassword(b *testing.B) {
 	}
 	for _, benchmark := range benchmarks {
 		funcuntion := GetHashPassword(benchmark.password)
-		b.Run(benchmark.password, funcuntion)
+		b.Run(benchmark.useCase, funcuntion)
 	}
 }
 
@@ -54,7 +54,7 @@ func BenchmarkCheckPasswordHash(b *testing.B) {
 	}
 	for _, benchmark := range benchmarks {
 		funcuntion := GetPasswordHashChecking(benchmark.password, benchmark.hash)
-		b.Run(benchmark.password, funcuntion)
+		b.Run(benchmark.useCase, funcuntion)
 	}
 }
 
